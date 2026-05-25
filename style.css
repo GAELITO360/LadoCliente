@@ -1,16 +1,16 @@
-/* ================= VARIABLES Y CONFIGURACIÓN CÁLIDA ================= */
+
 :root {
-    --bg-crema: #faf6f0;       /* Fondo general acogedor */
+    --bg-crema: #faf6f0;       
     --white: #ffffff;
-    --brown-dark: #3e2723;    /* Color de madera café, elegante y rústico */
+    --brown-dark: #3e2723;    
     --brown-light: #5d4037;
-    --accent-green: #4caf50;   /* Verde abarrotes/frescura */
-    --accent-orange: #ff9800;  /* Naranja amigable de ofertas */
+    --accent-green: #4caf50;   
+    --accent-orange: #ff9800;  
     --text-main: #2d1f1d;
     --text-muted: #756865;
     --border-soft: #ebdcd0;
     --transition-smooth: all 0.25s ease-in-out;
-    --font-heading: 'Fredoka', sans-serif; /* Letra redondeada y amigable */
+    --font-heading: 'Fredoka', sans-serif; 
     --font-sans: 'Quicksand', sans-serif;
 }
 
@@ -38,7 +38,7 @@ body {
     justify-content: center;
     gap: 0.5rem;
     padding: 0.8rem 1.8rem;
-    border-radius: 50px; /* Bordes totalmente redondeados y amables */
+    border-radius: 50px; 
     font-weight: 700;
     cursor: pointer;
     transition: var(--transition-smooth);
@@ -76,7 +76,7 @@ body {
 
 .btn-block { width: 100%; }
 
-/* ================= COMPONENTE DE LOGIN VECINAL ================= */
+
 .auth-container {
     min-height: 100vh;
     display: flex;
@@ -161,7 +161,7 @@ body {
     font-weight: 700;
 }
 
-/* ================= NAVBAR TRADICIONAL / LIMPIA ================= */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -259,13 +259,13 @@ body {
 }
 .logout-btn:hover { color: var(--accent-orange); }
 
-/* ================= CONTENIDO PRINCIPAL ================= */
+
 .main-content {
     margin-top: 80px;
     padding: 2.5rem 4rem;
 }
 
-/* Banner Promocional */
+
 .hero-banner {
     background: #fffdf9;
     border: 2px solid var(--border-soft);
@@ -330,7 +330,7 @@ body {
     gap: 2rem;
 }
 
-/* Tarjeta de Producto Rustica-Moderna */
+
 .product-card {
     background: var(--white);
     border-radius: 18px;
@@ -417,7 +417,7 @@ body {
     border-color: var(--accent-green);
 }
 
-/* ================= SIDEBAR: CANASTA DE COMPRAS ================= */
+
 .cart-sidebar {
     position: fixed;
     top: 0;
@@ -473,7 +473,7 @@ body {
 .cart-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(62, 39, 35, 0.3); z-index: 105; display: none; }
 .cart-overlay.show { display: block; }
 
-/* ================= MODAL Y NOTA DE VENTA REAL ================= */
+
 .modal {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
@@ -483,7 +483,7 @@ body {
 .modal.open { display: flex; }
 .modal-content { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 1.2rem; }
 
-/* Nota de remisión clásica / Ticket de abarrotes */
+
 .ticket-container {
     background: #fffdfa;
     color: #2b2b2b;
@@ -504,7 +504,7 @@ body {
 
 .modal-actions { display: flex; flex-direction: column; gap: 0.5rem; }
 
-/* ================= FOOTER TRADICIONAL ================= */
+
 .main-footer {
     background: var(--brown-dark);
     color: #efebe9;
@@ -518,7 +518,7 @@ body {
 .footer-links p, .footer-contact p { font-size: 0.9rem; color: #d7ccc8; margin-bottom: 0.5rem; }
 .footer-bottom { text-align: center; border-top: 1px solid #5d4037; padding-top: 1.2rem; font-size: 0.85rem; color: #bcaaa4; }
 
-/* ================= DISEÑO RESPONSIVO ================= */
+
 @media (max-width: 1024px) {
     .navbar { padding: 0 2rem; }
     .main-content { padding: 2rem; }
