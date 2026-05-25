@@ -1,0 +1,536 @@
+/* ================= VARIABLES Y CONFIGURACIÓN CÁLIDA ================= */
+:root {
+    --bg-crema: #faf6f0;       /* Fondo general acogedor */
+    --white: #ffffff;
+    --brown-dark: #3e2723;    /* Color de madera café, elegante y rústico */
+    --brown-light: #5d4037;
+    --accent-green: #4caf50;   /* Verde abarrotes/frescura */
+    --accent-orange: #ff9800;  /* Naranja amigable de ofertas */
+    --text-main: #2d1f1d;
+    --text-muted: #756865;
+    --border-soft: #ebdcd0;
+    --transition-smooth: all 0.25s ease-in-out;
+    --font-heading: 'Fredoka', sans-serif; /* Letra redondeada y amigable */
+    --font-sans: 'Quicksand', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-crema);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+}
+
+/* Utilidades */
+.hidden { display: none !important; }
+.brand-accent { color: var(--accent-green); }
+
+/* ================= BOTONES AMIGABLES ================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px; /* Bordes totalmente redondeados y amables */
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: none;
+    font-family: var(--font-heading);
+}
+
+.btn-primary {
+    background-color: var(--accent-green);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.25);
+}
+
+.btn-primary:hover {
+    background-color: #388e3c;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: var(--accent-orange);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.25);
+}
+
+.btn-secondary:hover {
+    background-color: #f57c00;
+    transform: translateY(-1px);
+}
+
+.btn-text {
+    background: transparent;
+    color: var(--text-muted);
+}
+.btn-text:hover { color: var(--brown-dark); }
+
+.btn-block { width: 100%; }
+
+/* ================= COMPONENTE DE LOGIN VECINAL ================= */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(135deg, #fdfbf7 0%, #ebdcd0 100%);
+}
+
+.auth-card {
+    background: var(--white);
+    border: 2px solid var(--border-soft);
+    padding: 2.5rem;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 440px;
+    box-shadow: 0 10px 25px rgba(62, 39, 35, 0.08);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-heading);
+    font-size: 1.7rem;
+    color: var(--brown-dark);
+}
+
+.store-icon-main {
+    color: var(--accent-orange);
+}
+
+.auth-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.auth-header .logo { justify-content: center; margin-bottom: 0.6rem; }
+.auth-header p { color: var(--text-muted); font-size: 0.95rem; }
+
+.input-group {
+    margin-bottom: 1.2rem;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: var(--brown-light);
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.85rem 1.2rem;
+    background: var(--bg-crema);
+    border: 2px solid var(--border-soft);
+    border-radius: 14px;
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    transition: var(--transition-smooth);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    background: var(--white);
+}
+
+.auth-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.warm-link {
+    color: var(--accent-orange);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* ================= NAVBAR TRADICIONAL / LIMPIA ================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: var(--white);
+    border-bottom: 2px solid var(--border-soft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4rem;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.search-bar {
+    display: flex;
+    background: var(--bg-crema);
+    border-radius: 50px;
+    padding: 0.2rem 0.2rem 0.2rem 1.2rem;
+    width: 38%;
+    border: 2px solid var(--border-soft);
+}
+
+.search-bar input {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    flex-grow: 1;
+    font-family: var(--font-sans);
+    font-weight: 600;
+}
+.search-bar input:focus { outline: none; }
+
+.search-bar button {
+    background: var(--brown-dark);
+    border: none;
+    color: var(--white);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.nav-menu a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    transition: var(--transition-smooth);
+}
+
+.nav-menu a:hover, .nav-menu a.active { color: var(--accent-green); }
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cart-trigger {
+    background: var(--bg-crema);
+    border: 2px solid var(--border-soft);
+    color: var(--brown-dark);
+    font-size: 1.2rem;
+    padding: 0.6rem;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.cart-trigger:hover { background-color: var(--border-soft); }
+
+.badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--accent-orange);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+.logout-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.logout-btn:hover { color: var(--accent-orange); }
+
+/* ================= CONTENIDO PRINCIPAL ================= */
+.main-content {
+    margin-top: 80px;
+    padding: 2.5rem 4rem;
+}
+
+/* Banner Promocional */
+.hero-banner {
+    background: #fffdf9;
+    border: 2px solid var(--border-soft);
+    border-radius: 20px;
+    padding: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3.5rem;
+    box-shadow: 0 6px 15px rgba(62, 39, 35, 0.03);
+}
+
+.banner-content { max-width: 60%; }
+.banner-content .tag {
+    background: #e8f5e9;
+    color: var(--accent-green);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.banner-content h1 {
+    font-family: var(--font-heading);
+    font-size: 2.6rem;
+    color: var(--brown-dark);
+    margin: 1rem 0;
+}
+
+.banner-content p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.5; }
+
+.banner-visual {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fruit-decor {
+    font-size: 6rem;
+    color: #ff5252;
+    animation: simple-sway 3s ease-in-out infinite alternate;
+}
+
+@keyframes simple-sway {
+    0% { transform: rotate(-5deg); }
+    100% { transform: rotate(5deg); }
+}
+
+/* Sección Productos */
+.products-section { margin-bottom: 4rem; }
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--brown-dark);
+    margin-bottom: 2rem;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+/* Tarjeta de Producto Rustica-Moderna */
+.product-card {
+    background: var(--white);
+    border-radius: 18px;
+    overflow: hidden;
+    border: 2px solid var(--border-soft);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(62, 39, 35, 0.06);
+    border-color: var(--accent-green);
+}
+
+.product-img {
+    height: 180px;
+    background: #fdfaf6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid var(--border-soft);
+}
+
+.product-img i {
+    font-size: 3.5rem;
+    color: var(--brown-light);
+    opacity: 0.8;
+}
+
+.product-info {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--brown-dark);
+    margin-bottom: 0.4rem;
+}
+
+.product-desc {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    flex-grow: 1;
+}
+
+.product-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.product-price {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--brown-dark);
+}
+
+.btn-add-cart {
+    background: var(--bg-crema);
+    color: var(--accent-green);
+    border: 2px solid var(--border-soft);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-add-cart:hover {
+    background: var(--accent-green);
+    color: var(--white);
+    border-color: var(--accent-green);
+}
+
+/* ================= SIDEBAR: CANASTA DE COMPRAS ================= */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 400px;
+    height: 100vh;
+    background: var(--white);
+    z-index: 110;
+    box-shadow: -5px 0 25px rgba(0,0,0,0.05);
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid var(--border-soft);
+}
+
+.cart-sidebar.open { right: 0; }
+
+.cart-header {
+    padding: 1.5rem;
+    border-bottom: 2px solid var(--border-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-crema);
+}
+
+.cart-header h3 { font-family: var(--font-heading); color: var(--brown-dark); }
+.close-cart { background: transparent; border: none; color: var(--text-muted); font-size: 2rem; cursor: pointer; }
+
+.cart-items { flex-grow: 1; padding: 1.5rem; overflow-y: auto; }
+.empty-cart-msg { text-align: center; color: var(--text-muted); margin-top: 2rem; }
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    border-radius: 12px;
+    margin-bottom: 0.8rem;
+    border: 1px solid var(--border-soft);
+}
+
+.cart-item-info { flex-grow: 1; }
+.cart-item-info h4 { font-family: var(--font-heading); font-size: 0.95rem; color: var(--brown-dark); }
+.cart-item-info p { color: var(--accent-green); font-weight: 700; font-size: 0.9rem; }
+
+.cart-item-qty { display: flex; align-items: center; gap: 0.8rem; }
+.remove-item { background: transparent; border: none; color: #ff5252; cursor: pointer; }
+
+.cart-footer { padding: 1.5rem; border-top: 2px solid var(--border-soft); background: var(--bg-crema); }
+.cart-total-row { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--brown-dark); }
+
+.cart-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(62, 39, 35, 0.3); z-index: 105; display: none; }
+.cart-overlay.show { display: block; }
+
+/* ================= MODAL Y NOTA DE VENTA REAL ================= */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(45, 31, 29, 0.6);
+    z-index: 120; display: none; align-items: center; justify-content: center; padding: 2rem;
+}
+.modal.open { display: flex; }
+.modal-content { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: 1.2rem; }
+
+/* Nota de remisión clásica / Ticket de abarrotes */
+.ticket-container {
+    background: #fffdfa;
+    color: #2b2b2b;
+    border-radius: 8px;
+    border: 2px solid #dcd5cc;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    font-family: 'Courier New', Courier, monospace;
+}
+.ticket-body { padding: 1.8rem; }
+.ticket-header { text-align: center; margin-bottom: 1.2rem; }
+.ticket-header h3 { font-size: 1.15rem; font-weight: bold; color: #000; }
+.ticket-sub { font-size: 0.75rem; font-style: italic; color: #555; }
+.ticket-info { font-size: 0.8rem; margin-top: 0.6rem; }
+.ticket-divider { border-top: 1px dashed #999; margin: 0.8rem 0; }
+.ticket-prod-item { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.3rem; }
+.ticket-total { display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: bold; margin: 0.8rem 0; color: #000; }
+.ticket-footer-msg { text-align: center; font-size: 0.8rem; margin-top: 1.2rem; line-height: 1.4; }
+
+.modal-actions { display: flex; flex-direction: column; gap: 0.5rem; }
+
+/* ================= FOOTER TRADICIONAL ================= */
+.main-footer {
+    background: var(--brown-dark);
+    color: #efebe9;
+    padding: 3rem 4rem 1.5rem 4rem;
+    margin-top: auto;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem; }
+.footer-info .logo { color: var(--white); margin-bottom: 0.6rem; }
+.footer-info p { color: #bcaaa4; font-size: 0.9rem; max-width: 320px; }
+.footer-links h4, .footer-contact h4 { font-family: var(--font-heading); color: var(--accent-orange); margin-bottom: 0.8rem; }
+.footer-links p, .footer-contact p { font-size: 0.9rem; color: #d7ccc8; margin-bottom: 0.5rem; }
+.footer-bottom { text-align: center; border-top: 1px solid #5d4037; padding-top: 1.2rem; font-size: 0.85rem; color: #bcaaa4; }
+
+/* ================= DISEÑO RESPONSIVO ================= */
+@media (max-width: 1024px) {
+    .navbar { padding: 0 2rem; }
+    .main-content { padding: 2rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .search-bar, .nav-menu { display: none; }
+    .hero-banner { flex-direction: column; padding: 2rem; text-align: center; }
+    .banner-content { max-width: 100%; }
+    .banner-content h1 { font-size: 2rem; }
+    .banner-visual { display: none; }
+    .cart-sidebar { width: 100%; right: -100%; }
+    .footer-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tiendita Digital - La de la Esquina</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="login-view" class="auth-container">
+    <div class="warm-bg-pattern"></div>
+    <div class="auth-card">
+
+        <div class="auth-header">
+            <div class="logo">
+                <i class="fa-solid fa-shop store-icon-main"></i>
+                <span>
+                    Mi Tiendita
+                    <span class="brand-accent">Digital</span>
+                </span>
+            </div>
+            <p id="auth-message-text">
+                ¡Qué bueno verte! Inicia sesión para hacer tu mandado del día.
+            </p>
+        </div>
+
+        <form id="login-form" onsubmit="handleLogin(event)">
+            <div class="input-group">
+                <label for="email">
+                    <i class="fa-regular fa-envelope"></i>
+                    Correo Electrónico
+                </label>
+                <input type="email" id="email" placeholder="tu-correo@ejemplo.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">
+                    <i class="fa-solid fa-lock"></i>
+                    Contraseña
+                </label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+                Entrar a la tienda
+                <i class="fa-solid fa-basket-shopping"></i>
+            </button>
+        </form>
+
+        <form id="register-form" class="hidden" onsubmit="handleRegister(event)">
+            <div class="input-group">
+                <label for="register-name">
+                    <i class="fa-solid fa-user"></i>
+                    Nombre
+                </label>
+                <input type="text" id="register-name" placeholder="Tu nombre" required>
+            </div>
+
+            <div class="input-group">
+                <label for="register-email">
+                    <i class="fa-regular fa-envelope"></i>
+                    Correo Electrónico
+                </label>
+                <input type="email" id="register-email" placeholder="correo@ejemplo.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="register-password">
+                    <i class="fa-solid fa-lock"></i>
+                    Contraseña
+                </label>
+                <input type="password" id="register-password" placeholder="••••••••" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+                Crear Cuenta
+                <i class="fa-solid fa-user-plus"></i>
+            </button>
+        </form>
+
+        <div class="auth-footer" id="auth-footer-login">
+            <p>
+                ¿Eres vecino nuevo? 
+                <a href="#" class="warm-link" onclick="toggleAuthMode(event, 'register')">Regístrate aquí</a>
+            </p>
+        </div>
+        <div class="auth-footer hidden" id="auth-footer-register">
+            <p>
+                ¿Ya tienes una cuenta? 
+                <a href="#" class="warm-link" onclick="toggleAuthMode(event, 'login')">Inicia sesión</a>
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<div id="shop-view" class="shop-container hidden">
+    <header class="navbar">
+        <div class="nav-brand">
+            <i class="fa-solid fa-shop store-icon-main"></i>
+            <span>
+                Mi Tiendita
+                <span class="brand-accent">Digital</span>
+            </span>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar leche, pan, fruta...">
+            <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="#" class="active">Inicio</a>
+            <a href="#">Abarrotes</a>
+            <a href="#">Frutas y Verduras</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="cart-trigger" onclick="toggleCart()">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span id="cart-count" class="badge">0</span>
+            </button>
+            <button class="logout-btn" onclick="handleLogout()">
+                <i class="fa-solid fa-door-open"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-banner">
+            <div class="banner-content">
+                <span class="tag">Fresco y del Día</span>
+                <h1>¡El mandado completo hasta tu mesa!</h1>
+                <p>Los productos de confianza de la tiendita de siempre.</p>
+                <a href="#productos" class="btn btn-secondary">Ver lo de Hoy</a>
+            </div>
+            <div class="banner-visual">
+                <i class="fa-solid fa-apple-whole fruit-decor"></i>
+            </div>
+        </section>
+
+        <section id="productos" class="products-section">
+            <h2 class="section-title">
+                Productos
+                <span class="brand-accent">Recomendados</span>
+            </h2>
+            <div class="products-grid" id="products-grid"></div>
+        </section>
+    </main>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>
+                <i class="fa-solid fa-basket-shopping"></i>
+                Tu Canasta
+            </h3>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+
+        <div class="cart-items" id="cart-items">
+            <p class="empty-cart-msg">Tu canasta está vacía.</p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="cart-total-amount">$0.00</span>
+            </div>
+            <button class="btn btn-primary btn-block" onclick="checkout()">
+                Listo, hacer pedido
+                <i class="fa-solid fa-check"></i>
+            </button>
+        </div>
+    </div>
+
+    <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+    <div id="ticket-modal" class="modal">
+        <div class="modal-content">
+            <div class="ticket-container" id="ticket-print">
+                <div class="ticket-body">
+                    <div class="ticket-header">
+                        <h3>MI TIENDITA DIGITAL</h3>
+                        <p class="ticket-subtitle">La de la Esquina de Siempre</p>
+                        <p>¡Gracias por apoyar al negocio local!</p>
+                    </div>
+                    <div class="ticket-divider"></div>
+                    <div class="ticket-info">
+                        <p><strong>Atendido a:</strong> <span id="ticket-client-name">Cliente</span></p>
+                        <p><strong>Fecha:</strong> <span id="ticket-date">--/--/----</span></p>
+                        <p><strong>Nota de Venta:</strong> #NDV-<span id="ticket-id">0000</span></p>
+                    </div>
+                    <div class="ticket-divider"></div>
+                    <div class="ticket-products" id="ticket-products-list">
+                        </div>
+                    <div class="ticket-divider"></div>
+                    <div class="ticket-total">
+                        <span>TOTAL NETO:</span>
+                        <span id="ticket-total-val">$0.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="downloadTicket()">
+                    <i class="fa-solid fa-print"></i>
+                    Imprimir Nota
+                </button>
+                <button class="btn btn-text" onclick="closeTicketModal()">Seguir comprando</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
