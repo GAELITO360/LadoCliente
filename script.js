@@ -17,7 +17,7 @@ import {
     onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// ================= FIREBASE CONFIGURATION =================
+
 const firebaseConfig = {
   apiKey: "AIzaSyBBB8xDItXy26YVzhO3YbHitQ1AGbo-jZI",
   authDomain: "tienditadigital.firebaseapp.com",
@@ -31,23 +31,23 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-// ================= VARIABLES GLOBALES DE ESTADO =================
+
 let PRODUCTOS = [];
 let carrito = [];
 let unsubscribeProductos = null;
 
-// ================= MONITOR DE SESIÓN ACTIVA =================
+
 onAuthStateChanged(auth, (user) => {
     const loginView = document.getElementById('login-view');
     const shopView = document.getElementById('shop-view');
 
     if (user) {
-        // Al quitar la validación de roles, cualquier cuenta iniciada aquí entra directo a la tienda
+        
         if (loginView) loginView.classList.add('hidden');
         if (shopView) shopView.classList.remove('hidden');
         escucharProductosTienda();
     } else {
-        // Limpieza completa al cerrar sesión
+        
         if (unsubscribeProductos) {
             unsubscribeProductos();
             unsubscribeProductos = null;
@@ -60,7 +60,7 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-// ================= ESCUCHAR PRODUCTOS EN TIEMPO REAL =================
+
 function escucharProductosTienda() {
     if (unsubscribeProductos) unsubscribeProductos();
 
@@ -85,7 +85,7 @@ function escucharProductosTienda() {
     });
 }
 
-// ================= AUTENTICACIÓN Y MANEJO DE VISTAS =================
+
 window.toggleAuthMode = toggleAuthMode;
 window.handleLogin = handleLogin;
 window.handleRegister = handleRegister;
@@ -140,7 +140,7 @@ function handleRegister(event) {
             return updateProfile(userCreated, { displayName: name });
         })
         .then(() => {
-            // Guardamos el registro del usuario en la base de datos de forma informativa
+            
             return setDoc(doc(db, "usuarios", userCreated.uid), {
                 nombre: name,
                 correo: email
@@ -164,7 +164,7 @@ function handleLogout() {
     });
 }
 
-// ================= RENDERIZADO DE PRODUCTOS =================
+
 window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
 window.toggleCart = toggleCart;
