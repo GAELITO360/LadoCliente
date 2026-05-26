@@ -27,7 +27,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Utilidades */
+
 .hidden { display: none !important; }
 .brand-accent { color: var(--accent-green); }
 
