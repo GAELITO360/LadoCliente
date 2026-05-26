@@ -31,7 +31,6 @@ body {
 .hidden { display: none !important; }
 .brand-accent { color: var(--accent-green); }
 
-/* ================= BOTONES AMIGABLES ================= */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -315,7 +314,7 @@ body {
     100% { transform: rotate(5deg); }
 }
 
-/* Sección Productos */
+
 .products-section { margin-bottom: 4rem; }
 .section-title {
     font-family: var(--font-heading);
